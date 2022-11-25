@@ -28,7 +28,7 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     NgxPaginationModule,
     CKEditorModule,
-    MainModule
+    MainModule,
   ],
   providers: [
     {

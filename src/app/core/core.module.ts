@@ -5,6 +5,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { SharedModule } from '../shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -18,6 +21,11 @@ import { LoginComponent } from './components/login/login.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+
+    //
+    SharedModule,
+    NgxPaginationModule,
+    CKEditorModule,
   ],
   exports: [
     SidebarComponent,

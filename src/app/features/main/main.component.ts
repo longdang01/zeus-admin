@@ -10,15 +10,14 @@ export class MainComponent extends BaseComponent implements OnInit, AfterViewIni
 
   constructor(injector: Injector) {
     super(injector);
-      // const dynamicScripts = [
-      // '/assets/js/app.js',
-      // '/assets/js/jquery-3.6.0.min.js',
-      // '/assets/js/jquery-ui.min.js',
-      // '/assets/js/main.js',
-      // '/assets/js/ntc.js',
-    // ];
-    // this.loadScripts(dynamicScripts); 
-
+    const dynamicScripts = [
+    '/assets/js/app.js',
+    // '/assets/js/jquery-3.6.0.min.js',
+    // '/assets/js/jquery-ui.min.js',
+    // '/assets/js/main.js',
+    // '/assets/js/ntc.js',
+    ];
+    this.loadScripts(dynamicScripts); 
   }
 
   ngOnInit(): void {

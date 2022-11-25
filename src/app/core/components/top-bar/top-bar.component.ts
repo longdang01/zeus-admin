@@ -31,12 +31,11 @@ export class TopBarComponent extends BaseComponent implements OnInit, AfterViewI
   }
 
   ngAfterViewInit(): void {
-    const dynamicScripts = [
-      '/assets/js/app.js',
-      '',
-    ];
+    // const dynamicScripts = [
+    //   '/assets/js/app.js',
+    // ];
     
-    this.loadScripts(dynamicScripts); 
+    // this.loadScripts(dynamicScripts); 
   }
 
   getUser() {
@@ -51,6 +50,7 @@ export class TopBarComponent extends BaseComponent implements OnInit, AfterViewI
     localStorage.removeItem("id_token");
     this.ngZone.run(() => this.router.navigateByUrl('/login')).then(() => {
       $('.dropdown-menu').css('display', 'none');
+      $('.dropdown-menu').remove();
     });
     // this.router.navigateByUrl('/login')
 

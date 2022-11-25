@@ -47,13 +47,6 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/app.js",
-              "src/assets/js/jquery-3.6.0.min.js",
-              "src/assets/js/jquery-ui.min.js",
-              "src/assets/js/main.js",
-              "src/assets/js/ntc.js",
-              "src/assets/js/farbtastic.js",
-              "src/assets/js/ntc_main.js"
             ]
           },
           "configurations": {

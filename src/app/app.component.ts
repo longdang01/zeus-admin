@@ -17,7 +17,7 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
     //   console.log('script loaded ', data);
     // }).catch(error => console.log(error));
     const dynamicScripts = [
-      '/assets/js/app.js',
+      // '/assets/js/app.js',
       '/assets/js/jquery-3.6.0.min.js',
       '/assets/js/jquery-ui.min.js',
       '/assets/js/main.js',

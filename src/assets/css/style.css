@@ -77,9 +77,6 @@
   transition: transform 0.3s ease;
 }
 
-.side-menu__sub-open {
-  display: block;
-}
 #colorImage,
 #collectionImage,
 #supplierImage,
@@ -91,6 +88,4 @@
   box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
+

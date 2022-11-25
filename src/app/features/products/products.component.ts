@@ -112,6 +112,8 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
       color: this.colorId,
       picture: [''],
     })
+
+   
   }
 
   ngOnInit(): void {

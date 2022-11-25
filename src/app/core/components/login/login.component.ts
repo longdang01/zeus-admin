@@ -64,13 +64,13 @@ export class LoginComponent extends BaseComponent implements OnInit, AfterViewIn
 
   ngAfterViewInit(): void {
 
-    const dynamicScripts = [
-      // '/assets/js/app.js',
-      '/assets/js/jquery-3.6.0.min.js',
-      '/assets/js/jquery-ui.min.js',
+    // const dynamicScripts = [
+    //   '/assets/js/app.js',
+      // '/assets/js/jquery-3.6.0.min.js',
+      // '/assets/js/jquery-ui.min.js',
       // '/assets/js/main.js',
       // '/assets/js/ntc.js',
-    ];
+    // ];
 
     // const dynamicStyles = [
     //   '/assets/css/app.css',
