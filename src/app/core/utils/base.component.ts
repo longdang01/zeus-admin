@@ -94,4 +94,5 @@ export class BaseComponent {
         return link;
     }
      
+    
 }

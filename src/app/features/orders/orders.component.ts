@@ -71,6 +71,11 @@ export class OrdersComponent implements OnInit {
     this.getOrdersList();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+  
   //Orders
   getOrdersList() {
     this.ordersService.get().subscribe((res: any) => {

@@ -63,6 +63,11 @@ export class CollectionsComponent implements OnInit {
     this.getCollections();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+  
   //Collections
   getCollections() {
     this.collectionService.get().subscribe(res => {

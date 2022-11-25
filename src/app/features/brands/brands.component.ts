@@ -49,6 +49,11 @@ export class BrandsComponent implements OnInit {
     this.getBrands();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+
   //Brands
   getBrands() {
     this.brandService.get().subscribe((res: any) => {

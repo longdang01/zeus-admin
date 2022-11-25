@@ -69,6 +69,11 @@ export class StaffsComponent implements OnInit {
     this.getStaffs();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+
   //Categories
   getStaffs() {
     this.staffService.get().subscribe((res: any) => {

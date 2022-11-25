@@ -49,6 +49,11 @@ export class PaymentsComponent implements OnInit {
     this.getPayments();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+  
   //Payments
   getPayments() {
     this.paymentService.get().subscribe((res: any) => {

@@ -58,6 +58,11 @@ export class CustomersComponent implements OnInit {
     this.getCustomers();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+
   //Customers
   getCustomers() {
     this.customerService.get().subscribe(res => {

@@ -119,13 +119,14 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
   ngOnInit(): void {
     this.getProducts();
   }
-
+  
   ngAfterViewInit(): void {
-    const dynamicScripts = [
-      '/assets/js/farbtastic.js',
-      '/assets/js/ntc_main.js',
-    ];
-    this.loadScripts(dynamicScripts); 
+    
+  }
+
+  hideCollapse(id: any) {
+      $(id).addClass("collapse");
+      $(id).removeClass("show");
   }
 
   //Products
@@ -147,9 +148,15 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
 
     if(id) {
       this.productService.getById(id).subscribe(res => {
+        const dynamicScripts = [
+          '/assets/js/farbtastic.js',
+          '/assets/js/ntc_main.js',
+        ];
+        this.loadScripts(dynamicScripts); 
+
         this.colors = res.colors;
+
         // this.loadScripts();
- 
         this.productForm.setValue({
           subCategory: res['subCategory']._id,
           brand: res['brand'],

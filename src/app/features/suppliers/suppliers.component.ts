@@ -57,6 +57,11 @@ export class SuppliersComponent implements OnInit {
     this.getSuppliers();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+
   //Categories
   getSuppliers() {
     this.supplierService.get().subscribe(res => {

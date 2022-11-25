@@ -54,6 +54,11 @@ export class SlidesComponent implements OnInit {
     this.getSlides();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+
   //Categories
   getSlides() {
     this.slideService.get().subscribe(res => {

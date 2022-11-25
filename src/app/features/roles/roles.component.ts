@@ -49,6 +49,11 @@ export class RolesComponent implements OnInit {
     this.getRoles();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+  
   //Roles
   getRoles() {
     this.roleService.get().subscribe((res: any) => {

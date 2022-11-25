@@ -28,6 +28,7 @@ export class TopBarComponent extends BaseComponent implements OnInit, AfterViewI
     }
 
   ngOnInit(): void {
+    
   }
 
   ngAfterViewInit(): void {

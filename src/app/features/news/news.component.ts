@@ -58,6 +58,11 @@ export class NewsComponent implements OnInit {
     this.getNewsList();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+
   //Categories
   getNewsList() {
     this.newsService.get().subscribe(res => {

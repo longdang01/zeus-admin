@@ -16,7 +16,7 @@ export class SidebarComponent extends BaseComponent implements OnInit, AfterView
   }
 
   ngOnInit(): void {
-    
+ 
   }
 
   ngAfterViewInit() {

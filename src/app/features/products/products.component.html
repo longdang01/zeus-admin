@@ -280,27 +280,40 @@
             <div class="grid columns-12 gap-4 gap-y-3">
               <!-- ng-if="action != 0" -->
               <div [ngClass]="state == 1 ? 'show' : 'hide'" class="g-col-12">
-                <button
-                  class="btn btn-secondary btn__manage w-full me-1 mb-2"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseColor"
-                >
-                  Màu sắc
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="feather feather-chevron-down"
-                  >
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
+                <div class="grid columns-12 gap-4 gap-y-3 w-full">
+                  <div class="g-col-11">
+                    <button
+                      class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseColor"
+                    >
+                      Màu sắc
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-chevron-down"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="g-col-1">
+                    <button
+                      class="btn btn-secondary w-full me-1 mb-2"
+                      style="border: 1px solid #e2e8f0; height: 42px"
+                      (click)="hideCollapse('#collapseColor')"
+                    >
+                      &#8212;
+                    </button>
+                  </div>
+                </div>
                 <div class="collapse" id="collapseColor">
                   <div class="card card-body" style="background: #f1f5f8">
                     <div
@@ -472,28 +485,41 @@
                 </div>
               </div>
               <div class="g-col-12">
-                <button
-                  class="btn btn-secondary btn__manage w-full me-1 mb-2"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseProduct"
-                >
-                  Sản phẩm
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="feather feather-chevron-down"
-                  >
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="collapse" id="collapseProduct">
+                <div class="grid columns-12 gap-4 gap-y-3 w-full">
+                  <div class="g-col-11">
+                    <button
+                      class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseProduct"
+                    >
+                      Sản phẩm
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-chevron-down"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="g-col-1">
+                    <button
+                      class="btn btn-secondary w-full me-1 mb-2"
+                      style="border: 1px solid #e2e8f0; height: 42px"
+                      (click)="hideCollapse('#collapseProduct')"
+                    >
+                      &#8212;
+                    </button>
+                  </div>
+                </div>
+                <div class="collapse menu" id="collapseProduct">
                   <div class="card card-body" style="background: #f1f5f8">
                     <div
                       style="background: #fff"
@@ -758,27 +784,40 @@
           <div class="grid columns-12 gap-4 gap-y-3 text-center">
             <!-- images -->
             <div class="g-col-6">
-              <button
-                class="btn btn-secondary btn__manage w-full me-1 mb-2"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseImage"
-              >
-                Hình ảnh
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-chevron-down"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
+              <div class="grid columns-12 gap-4 gap-y-3 w-full">
+                <div class="g-col-11">
+                  <button
+                    class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseImage"
+                  >
+                    Hình ảnh
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-chevron-down"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="g-col-1">
+                  <button
+                    class="btn btn-secondary w-full me-1 mb-2"
+                    style="border: 1px solid #e2e8f0; height: 42px"
+                    (click)="hideCollapse('#collapseImage')"
+                  >
+                    &#8212;
+                  </button>
+                </div>
+              </div>
               <div class="collapse" id="collapseImage">
                 <div class="card card-body" style="background: #f1f5f8">
                   <div
@@ -887,27 +926,40 @@
 
             <!-- sizes -->
             <div class="g-col-6">
-              <button
-                class="btn btn-secondary btn__manage w-full me-1 mb-2"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseSize"
-              >
-                Kích cỡ
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-chevron-down"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
+              <div class="grid columns-12 gap-4 gap-y-3 w-full">
+                <div class="g-col-11">
+                  <button
+                    class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseSize"
+                  >
+                    Kích cỡ
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-chevron-down"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="g-col-1">
+                  <button
+                    class="btn btn-secondary w-full me-1 mb-2"
+                    style="border: 1px solid #e2e8f0; height: 42px"
+                    (click)="hideCollapse('#collapseSize')"
+                  >
+                    &#8212;
+                  </button>
+                </div>
+              </div>
               <div class="collapse" id="collapseSize">
                 <div class="card card-body" style="background: #f1f5f8">
                   <div
@@ -1024,27 +1076,40 @@
 
             <!-- discounts -->
             <div class="g-col-12">
-              <button
-                class="btn btn-secondary btn__manage w-full me-1 mb-2"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseDiscount"
-              >
-                Giảm giá
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-chevron-down"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
+              <div class="grid columns-12 gap-4 gap-y-3 w-full">
+                <div class="g-col-11">
+                  <button
+                    class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseDiscount"
+                  >
+                    Giảm giá
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-chevron-down"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="g-col-1">
+                  <button
+                    class="btn btn-secondary w-full me-1 mb-2"
+                    style="border: 1px solid #e2e8f0; height: 42px"
+                    (click)="hideCollapse('#collapseDiscount')"
+                  >
+                    &#8212;
+                  </button>
+                </div>
+              </div>
               <div class="collapse" id="collapseDiscount">
                 <div class="card card-body" style="background: #f1f5f8">
                   <div

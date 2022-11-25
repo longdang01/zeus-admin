@@ -270,27 +270,40 @@
           <div class="modal-body">
             <div class="grid columns-12 gap-4 gap-y-3">
               <div class="g-col-12">
-                <button
-                  class="btn btn-secondary btn__manage w-full me-1 mb-2"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseRole"
-                >
-                  Vai trò
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="feather feather-chevron-down"
-                  >
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
+                <div class="grid columns-12 gap-4 gap-y-3 w-full">
+                  <div class="g-col-11">
+                    <button
+                      class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseRole"
+                    >
+                      Vai trò
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-chevron-down"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="g-col-1">
+                    <button
+                      class="btn btn-secondary w-full me-1 mb-2"
+                      style="border: 1px solid #e2e8f0; height: 42px"
+                      (click)="hideCollapse('#collapseRole')"
+                    >
+                      &#8212;
+                    </button>
+                  </div>
+                </div>
                 <div class="collapse" id="collapseRole">
                   <div class="card card-body" style="background: #f1f5f8">
                     <div

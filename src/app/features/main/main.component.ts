@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Injector, OnInit } from '@angular/core';
 import { BaseComponent } from 'src/app/core/utils/base.component';
-
+declare var $: any;
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -10,21 +10,27 @@ export class MainComponent extends BaseComponent implements OnInit, AfterViewIni
 
   constructor(injector: Injector) {
     super(injector);
-    const dynamicScripts = [
-    '/assets/js/app.js',
-    // '/assets/js/jquery-3.6.0.min.js',
-    // '/assets/js/jquery-ui.min.js',
-    // '/assets/js/main.js',
-    // '/assets/js/ntc.js',
-    ];
-    this.loadScripts(dynamicScripts); 
-  }
-
-  ngOnInit(): void {
     
   }
   
+  ngOnInit(): void {
+      const dynamicScripts = [
+        '/assets/js/app.js',
+        // '/assets/js/jquery-3.6.0.min.js',
+        // '/assets/js/jquery-ui.min.js',
+        // '/assets/js/main.js',
+        // '/assets/js/ntc.js',
+        ];
+      if ($('script[src="/assets/js/app.js"]').length <= 0) {
+        this.loadScripts(dynamicScripts); 
+      } else {
+        $('script[src*="/assets/js/app.js"]').remove();
+        this.loadScripts(dynamicScripts); 
+      }
+  }
+
   ngAfterViewInit(): void {
+    
     // const dynamicScripts = [
     //   '/assets/js/app.js',
       // '/assets/js/jquery-3.6.0.min.js',
@@ -43,6 +49,7 @@ export class MainComponent extends BaseComponent implements OnInit, AfterViewIni
     // this.loadStyles(dynamicStyles); 
     // this.loadScripts(dynamicScripts); 
   }
+  
 
   
 

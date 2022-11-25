@@ -62,6 +62,11 @@ export class CategoriesComponent implements OnInit {
     this.getCategories();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+  
   //Categories
   getCategories() {
     this.categoryService.get().subscribe((res: any) => {

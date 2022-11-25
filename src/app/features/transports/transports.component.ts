@@ -50,6 +50,11 @@ export class TransportsComponent implements OnInit {
     this.getTransports();
   }
 
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
+  }
+
   //Transport
   getTransports() {
     this.transportService.get().subscribe((res: any) => {

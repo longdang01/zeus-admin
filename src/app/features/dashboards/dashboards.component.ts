@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Injector, OnInit } from '@angular/core';
 import { BaseComponent } from 'src/app/core/utils/base.component';
+declare var $: any;
 
 @Component({
   selector: 'app-dashboards',
@@ -20,5 +21,10 @@ export class DashboardsComponent extends BaseComponent implements OnInit, AfterV
       // '/assets/js/app.js',
     // ];
     // this.loadScripts(dynamicScripts); 
+  }
+
+  hideCollapse(id: any) {
+    $(id).addClass("collapse");
+    $(id).removeClass("show");
   }
 }
