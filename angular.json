@@ -5,7 +5,24 @@
   "projects": {
     "zeus-admin": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "css",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,6 +30,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "@ckeditor/ckeditor5-build-classic"
+            ],
             "outputPath": "dist/zeus-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,7 +46,15 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/app.js",
+              "src/assets/js/jquery-3.6.0.min.js",
+              "src/assets/js/jquery-ui.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/ntc.js",
+              "src/assets/js/farbtastic.js",
+              "src/assets/js/ntc_main.js"
+            ]
           },
           "configurations": {
             "production": {

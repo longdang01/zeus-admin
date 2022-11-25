@@ -1,0 +1,25 @@
+<div class="main">
+  <!-- BEGIN: Mobile Menu -->
+  <!-- @include('admin.components._mobile') -->
+  <!-- <app-mobile></app-mobile> -->
+  <!-- END: Mobile Menu -->
+  <div class="d-flex">
+    <!-- BEGIN: Side Menu -->
+    <app-sidebar></app-sidebar>
+    <!-- END: Side Menu -->
+
+    <!-- BEGIN: Content -->
+    <div class="content">
+      <!-- BEGIN: Top Bar -->
+      <app-top-bar></app-top-bar>
+      <!-- END: Top Bar -->
+      <div class="content-inner">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- END: Content -->
+  </div>
+  <!-- BEGIN: Dark Mode Switcher-->
+  <!-- @include('admin.components._switcher') -->
+  <!-- END: Dark Mode Switcher-->
+</div>

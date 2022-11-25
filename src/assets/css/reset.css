@@ -1,0 +1,237 @@
+.theme-1 {
+  --bs-theme-1-rgb: 6, 78, 59;
+  --bs-theme-23-rgb: 5, 70, 53;
+  --bs-theme-3-rgb: 222, 231, 239;
+  --bs-theme-26-rgb: 6, 78, 59;
+  --bs-theme-27-rgb: 222, 231, 239;
+  --bs-theme-24-rgb: 4, 63, 48;
+}
+
+.bg-theme-1,
+.bg-theme-1-hover:hover {
+  background-color: #135745 !important;
+}
+
+.side-nav .side-nav__devider {
+  --bs-bg-opacity: 0.08;
+}
+
+.side-nav > ul > li > .side-menu.side-menu--active .side-menu__icon {
+  color: #2d3748;
+}
+
+.dropdown-menu .dropdown-content .dropdown-divider {
+  opacity: 0.08;
+}
+
+.side-nav
+  > ul
+  > li
+  > .side-menu:not(.side-menu--active)
+  .side-menu__icon:before {
+  background-color: inherit !important;
+}
+
+.btn-elevated-primary,
+.btn-elevated-rounded-primary,
+.btn-primary,
+.btn-rounded-primary {
+  background-color: #064e3b;
+  border-color: #064e3b;
+  color: #fff;
+}
+
+.btn-elevated-primary:hover,
+.btn-elevated-rounded-primary:hover,
+.btn-primary:hover,
+.btn-rounded-primary:hover {
+  background-color: #064e3b;
+  border-color: #064e3b;
+  color: #fff;
+}
+
+.active.btn-elevated-primary,
+.active.btn-elevated-rounded-primary,
+.active.btn-rounded-primary,
+.btn-check:active + .btn-elevated-primary,
+.btn-check:active + .btn-elevated-rounded-primary,
+.btn-check:active + .btn-primary,
+.btn-check:active + .btn-rounded-primary,
+.btn-check:checked + .btn-elevated-primary,
+.btn-check:checked + .btn-elevated-rounded-primary,
+.btn-check:checked + .btn-primary,
+.btn-check:checked + .btn-rounded-primary,
+.btn-elevated-primary:active,
+.btn-elevated-rounded-primary:active,
+.btn-primary.active,
+.btn-primary:active,
+.btn-rounded-primary:active,
+.show > .btn-primary.dropdown-toggle,
+.show > .dropdown-toggle.btn-elevated-primary,
+.show > .dropdown-toggle.btn-elevated-rounded-primary,
+.show > .dropdown-toggle.btn-rounded-primary {
+  background-color: #064e3b;
+  border-color: #064e3b;
+  color: #fff;
+}
+
+.btn-check:focus + .btn-elevated-primary,
+.btn-check:focus + .btn-elevated-rounded-primary,
+.btn-check:focus + .btn-primary,
+.btn-check:focus + .btn-rounded-primary,
+.btn-elevated-primary:focus,
+.btn-elevated-rounded-primary:focus,
+.btn-primary:focus,
+.btn-rounded-primary:focus {
+  background-color: #064e3b;
+  border-color: #064e3b;
+  color: #fff;
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: inherit;
+  border-color: inherit;
+  color: #fff;
+}
+
+.ngx-pagination li.small-screen {
+  display: none !important;
+}
+/* 
+.ngx-pagination li span {
+  display: inline-block;
+  background-color: #064e3b;
+  border-color: #064e3b;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.ngx-paginations li:not(.pagination-next):not(.pagination-previous) {
+  border-radius: 0.375rem;
+  box-shadow: none;
+  font-weight: 400;
+  margin-right: 0.5rem;
+  min-width: 40px;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  display: inline-flex;
+  justify-content: center;
+  vertical-align: baseline;
+  border: 1px solid transparent;
+  color: #2d3748;
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.429;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ngx-pagination li.current {
+  background: #064e3b;
+  color: #fff;
+} */
+.ngx-pagination {
+  display: flex;
+  align-items: center;
+  padding-left: 0px !important;
+}
+
+.ngx-pagination .current,
+.ngx-pagination a {
+  background: #064e3b !important;
+  border: transparent !important;
+  border-radius: 5px !important;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.ngx-pagination .pagination-next,
+.ngx-pagination .pagination-previous {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.ngx-pagination .pagination-next a,
+.ngx-pagination .pagination-previous a {
+  margin-right: 0 !important;
+}
+
+.ngx-pagination a:hover {
+  background: #064e3b;
+}
+
+.ngx-pagination li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff !important;
+  margin-right: 5px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.ngx-pagination .pagination-next a:after,
+.ngx-pagination .pagination-next.disabled:after,
+.ngx-pagination .pagination-previous a:before,
+.ngx-pagination .pagination-previous.disabled:before {
+  margin: 0 !important;
+}
+
+.form-check-input:checked {
+  background: #064e3b;
+  border-color: #064e3b;
+}
+
+.zoom-img-wrap {
+  z-index: 99999;
+}
+
+.zoom-overlay {
+  z-index: 9999;
+}
+
+#cke_1_contents > div,
+#cke_3_contents > div,
+#cke_4_contents > div {
+  padding: 8px;
+}
+
+select option:empty {
+  display: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0.25rem rgb(30 70 48 / 25%);
+  border-color: #00af81;
+}
+
+/* // change translateX of class intro-x in app.css */
+
+.ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+  box-shadow: 0 0 0 0.25rem rgb(30 70 48 / 25%) !important;
+  border-color: #00af81 !important;
+}
+
+.modal-dialog-scrollable:not(.modal-overlap) .modal-content {
+  overflow-y: scroll;
+  max-height: 100%;
+}

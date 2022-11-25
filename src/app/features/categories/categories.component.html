@@ -1,0 +1,493 @@
+<div>
+  <h2 class="intro-y fs-lg fw-medium mt-10">Danh sách danh mục</h2>
+  <div class="grid columns-12 gap-6 mt-5">
+    <div
+      class="intro-y g-col-12 d-flex flex-wrap flex-sm-nowrap align-items-center mt-2"
+    >
+      <button
+        class="btn btn-primary shadow-md me-2"
+        (click)="getCategory(null)"
+      >
+        <!-- data-bs-toggle="modal"
+        data-bs-target="#categoryModal" -->
+        Thêm danh mục
+      </button>
+      <div class="dropdown" style="position: relative" data-uid="_sebjmtfy8">
+        <button
+          class="dropdown-toggle btn px-2 box text-gray-700 dark-text-gray-300"
+          aria-expanded="[object HTMLDivElement]"
+          data-bs-toggle="dropdown"
+        >
+          <span
+            class="w-5 h-5 d-flex align-items-center justify-content-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-plus w-4 h-4"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </span>
+        </button>
+        <div class="dropdown-menu w-40" data-uid="_sebjmtfy8">
+          <div class="dropdown-content">
+            <a href="" class="dropdown-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-printer w-4 h-4 me-2"
+              >
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path
+                  d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+                ></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              In
+            </a>
+            <a href="" class="dropdown-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-file-text w-4 h-4 me-2"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              Xuất ra Excel
+            </a>
+            <a href="" class="dropdown-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-file-text w-4 h-4 me-2"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              Xuất ra PDF
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-none d-md-block mx-auto text-gray-600">
+        Hiển thị <span>{{ pageSize }}</span> /
+        <span>{{ categories.length }}</span> danh mục
+      </div>
+      <div class="w-full w-sm-auto mt-3 mt-sm-0 ms-sm-auto ms-md-0">
+        <div class="w-56 position-relative text-gray-700 dark-text-gray-300">
+          <input
+            type="text"
+            class="form-control w-56 box border-white dark-border-dark-3 pe-10 placeholder-theme-13"
+            placeholder="Tìm kiếm..."
+            [(ngModel)]="searchText"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-search w-4 h-4 position-absolute my-auto top-0 bottom-0 me-3 end-0"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- BEGIN: Data List -->
+    <div class="intro-y g-col-12 overflow-auto overflow-lg-visible">
+      <table class="table table-report mt-n2">
+        <thead>
+          <tr>
+            <th class="text-center text-nowrap w-20">Thứ tự</th>
+            <th class="text-wrap">Tên danh mục</th>
+            <th class="text-center text-nowrap w-40">Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let category of categories
+                | filter: { categoryName: searchText }
+                | paginate
+                  : {
+                      itemsPerPage: pageSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index
+            "
+            current-page="currentPage"
+            class="intro-x"
+          >
+            <td class="text-center w-20">
+              {{ (page - 1) * pageSize + i + 1 }}
+            </td>
+            <td class="text-start">{{ category.categoryName }}</td>
+            <td class="table-report__action w-40">
+              <div class="d-flex justify-content-center align-items-center">
+                <a
+                  class="d-flex align-items-center me-3"
+                  href="javascript:;"
+                  (click)="getCategory(category._id)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-check-square w-4 h-4 me-1"
+                  >
+                    <polyline points="9 11 12 14 22 4"></polyline>
+                    <path
+                      d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  class="d-flex align-items-center text-theme-6"
+                  href="javascript:;"
+                  (click)="deleteCategory(category._id)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-trash-2 w-4 h-4 me-1"
+                  >
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path
+                      d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                    ></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- END: Data List -->
+    <!-- BEGIN: Pagination -->
+    <div
+      class="intro-y g-col-12 d-flex flex-wrap flex-sm-row flex-sm-nowrap align-items-center"
+    >
+      <nav class="w-full w-sm-auto me-sm-auto">
+        <pagination-controls
+          previousLabel=""
+          nextLabel=""
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+        <!-- <dir-pagination-controls
+            max-size="10"
+            direction-links="true"
+            boundary-links="true"
+          >
+          </dir-pagination-controls> -->
+      </nav>
+      <select
+        (change)="onTableSizeChange($event)"
+        class="w-20 form-select box mt-3 mt-sm-0"
+      >
+        <option *ngFor="let size of pageSizes" [value]="size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+    <!-- END: Pagination -->
+  </div>
+
+  <!-- BEGIN: Modal Detail -->
+  <div id="categoryModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div
+      class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable"
+    >
+      <div class="modal-content">
+        <div [formGroup]="categoryForm">
+          <!-- BEGIN: Modal Header -->
+          <div class="modal-header">
+            <h2 class="fw-medium fs-base me-auto">{{ title }}</h2>
+          </div>
+          <!-- END: Modal Header -->
+          <!-- BEGIN: Modal Body -->
+          <div class="modal-body">
+            <div class="grid columns-12 gap-4 gap-y-3">
+              <div *ngIf="state === 1" class="g-col-12">
+                <button
+                  class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSubCategory"
+                >
+                  Danh mục con
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-chevron-down"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="collapse" id="collapseSubCategory">
+                  <div class="card card-body" style="background: #f1f5f8">
+                    <div
+                      style="background: #fff"
+                      class="grid columns-12 gap-4 gap-y-3 w-full p-5"
+                      [formGroup]="subCategoryForm"
+                    >
+                      <div class="g-col-12">
+                        <input
+                          id=""
+                          type="text"
+                          class="form-control"
+                          placeholder="Áo phông, Quần Jeans"
+                          formControlName="subCategoryName"
+                          required
+                        />
+                      </div>
+
+                      <div class="g-col-12">
+                        <!-- <div ckeditor="options"></div> -->
+                        <ckeditor
+                          [editor]="Editor"
+                          formControlName="description"
+                        ></ckeditor>
+                      </div>
+                      <div class="g-col-12 d-flex justify-content-start">
+                        <button
+                          class="btn btn-secondary btn__manage btn__create-subCategory me-1 mb-2"
+                          (click)="createSubCategory()"
+                        >
+                          Thêm
+                        </button>
+                        <button
+                          class="btn btn-secondary btn__manage btn__update-subCategory me-1 mb-2"
+                          (click)="updateSubCategory()"
+                        >
+                          Cập nhật
+                        </button>
+                        <button
+                          class="btn btn-secondary btn__manage btn__reset-subCategory me-1 mb-2"
+                          (click)="actionSubCategory(0)"
+                        >
+                          Làm mới
+                        </button>
+                      </div>
+                    </div>
+                    <table class="table table-report mt-n2 table__sub">
+                      <thead>
+                        <tr>
+                          <th class="text-wrap">Tên danh mục con</th>
+                          <th class="text-center text-nowrap w-20">
+                            Hành động
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          class="intro-x"
+                          *ngFor="let subCategory of subCategories"
+                          (click)="getSubCategory(subCategory._id, $event)"
+                        >
+                          <td class="text-wrap">
+                            {{ subCategory.subCategoryName }}
+                          </td>
+                          <td class="table-report__action w-20">
+                            <div
+                              class="d-flex justify-content-center align-items-center"
+                            >
+                              <a
+                                class="d-flex align-items-center text-theme-6"
+                                href="javascript:;"
+                                (click)="deleteSubCategory(subCategory._id)"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  class="feather feather-trash-2 w-4 h-4 me-1"
+                                >
+                                  <polyline points="3 6 5 6 21 6"></polyline>
+                                  <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                                  ></path>
+                                  <line x1="10" y1="11" x2="10" y2="17"></line>
+                                  <line x1="14" y1="11" x2="14" y2="17"></line>
+                                </svg>
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="g-col-12">
+                <button
+                  class="btn btn-secondary btn__manage w-full me-1 mb-2"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseCategory"
+                >
+                  Danh mục
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-chevron-down"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="collapse" id="collapseCategory">
+                  <div class="card card-body" style="background: #f1f5f8">
+                    <div
+                      style="background: #fff"
+                      class="grid columns-12 gap-4 gap-y-3 w-full p-5"
+                    >
+                      <div class="g-col-12">
+                        <label for="modal-form-1" class="form-label"
+                          >Tên danh mục</label
+                        >
+                        <input
+                          id="modal-form-1"
+                          type="text"
+                          class="form-control"
+                          placeholder="Áo, Quần"
+                          formControlName="categoryName"
+                          required
+                        />
+                      </div>
+                      <div class="g-col-12">
+                        <label for="modal-form-2" class="form-label"
+                          >Mô tả</label
+                        >
+                        <ckeditor
+                          [editor]="Editor"
+                          formControlName="description"
+                        ></ckeditor>
+                        <!-- <div ckeditor="options"></div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END: Modal Body -->
+          <!-- BEGIN: Modal Footer -->
+          <div class="modal-footer text-end">
+            <button
+              #closeBtn
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn btn-outline-secondary w-20 me-1"
+            >
+              Hủy
+            </button>
+            <button
+              type=""
+              class="btn btn-primary w-20"
+              (click)="state === 0 ? createCategory() : updateCategory()"
+            >
+              Lưu
+            </button>
+          </div>
+          <!-- END: Modal Footer -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- END: Modal Detail -->
+
+  <!-- BEGIN: Modal Confirm  -->
+
+  <!-- END: Modal Confirm -->
+
+  <!-- BEGIN: Modal Success  -->
+
+  <!-- END: Modal Success -->
+
+  <!-- BEGIN: Modal Failure  -->
+
+  <!-- END: Modal Failure -->
+</div>

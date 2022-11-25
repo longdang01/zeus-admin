@@ -1,0 +1,6 @@
+/** 2 folders in the structure haven't been created */
+/enums
+/constants
+
+/** fix webpack-dev-server disconnect. Try to connect*/
+npx webpack serve --allowed-hosts all
