@@ -148,12 +148,6 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
 
     if(id) {
       this.productService.getById(id).subscribe(res => {
-        const dynamicScripts = [
-          '/assets/js/farbtastic.js',
-          '/assets/js/ntc_main.js',
-        ];
-        this.loadScripts(dynamicScripts); 
-
         this.colors = res.colors;
 
         // this.loadScripts();
@@ -177,6 +171,12 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
           $('#sizeGuideImage').attr('src', `${res['sizeGuide']}`);
           $('#sizeGuideUpload').val('');
         }
+
+        const dynamicScripts = [
+          '/assets/js/farbtastic.js',
+          '/assets/js/ntc_main.js',
+        ];
+        this.loadScripts(dynamicScripts); 
       });
     } 
 

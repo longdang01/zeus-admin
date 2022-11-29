@@ -3,21 +3,23 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../models/User';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class UserService {
+  
   API_URL: string = 'http://localhost:5000/api/users';
 
+  constructor(private httpClient: HttpClient,private auth: AuthService) {}
+  
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     })
   }
-  
-  constructor(private httpClient: HttpClient) {}
   
   // get me
   getMe(): Observable<any> {

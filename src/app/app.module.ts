@@ -35,7 +35,8 @@ import { SharedModule } from './shared/shared.module';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorIntercept,
       multi: true
-    },
+    }
+    ,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
