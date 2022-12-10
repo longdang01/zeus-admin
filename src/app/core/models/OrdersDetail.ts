@@ -5,5 +5,7 @@ export interface OrdersDetail {
     color: string;
     size: string;
     quantity: number;
+    status: number;
+    note: string;
     isActive: number;
 }

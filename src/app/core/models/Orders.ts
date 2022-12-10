@@ -3,6 +3,7 @@ export interface Orders {
     payment: string;
     transport: string;
     deliveryAddress: string;
+    ordersCode: string;
     orderDate: Date;
     note: string;
     total: number;

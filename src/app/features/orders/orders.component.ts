@@ -17,7 +17,7 @@ export class OrdersComponent implements OnInit {
   // filter
   searchText: string = "" ;
   searchOrdersStatus: string = "";
-  searchCustomerName: string = "";
+  searchOrdersCode: string = "";
 
   // ckeditor config
   public Editor:any = ClassicEditor;
@@ -53,6 +53,7 @@ export class OrdersComponent implements OnInit {
       payment: [''],
       transport: [''],
       deliveryAddress: [''],
+      ordersCode: [''],
       orderDate: [''],
       note: [''],
       total: [''],
@@ -92,11 +93,13 @@ export class OrdersComponent implements OnInit {
       this.ordersService.getById(id).subscribe(res => {
         this.ordersStatusList = res.ordersStatus;
         this.ordersDetails = res.ordersDetails;
+        console.log(this.ordersDetails)
 
         this.ordersForm.setValue({
           payment: res['payment'],
           transport: res['transport'],
           deliveryAddress: res['deliveryAddress'],
+          ordersCode: res['ordersCode'],
           orderDate: res['orderDate'],
           note: res['note'],
           total: res['total'],
@@ -104,6 +107,7 @@ export class OrdersComponent implements OnInit {
           paid: res['paid'],
         });
 
+          console.log(this.ordersForm.get('ordersCode')?.value);
 
         $('#ordersModal').modal('show');
 
@@ -116,6 +120,7 @@ export class OrdersComponent implements OnInit {
         payment: [''],
         transport: [''],
         deliveryAddress: [''],
+        ordersCode: [''],
         orderDate: [''],
         note: [''],
         total: [''],
@@ -132,6 +137,11 @@ export class OrdersComponent implements OnInit {
 
     selectedOrdersVal.status = Number(selectedOrdersVal.status);
     selectedOrdersVal.paid = Number(selectedOrdersVal.paid);
+
+    // if(selectedOrdersVal.status == ) {
+    //   selectedOrdersVal.action = 0;
+    // }
+
     this.ordersService.update(selectedOrdersId, selectedOrdersVal)
     .subscribe(
       {

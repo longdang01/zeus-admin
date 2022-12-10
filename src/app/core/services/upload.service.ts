@@ -10,12 +10,12 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class UploadService {
   API_URL: string = 'http://localhost:5000/api/upload';
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    })
-  }
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*',
+  //   })
+  // }
   
   constructor(private httpClient: HttpClient) {}
   

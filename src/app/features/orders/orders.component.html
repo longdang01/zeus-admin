@@ -123,10 +123,10 @@
         </div>
         <input
           type="text"
-          class="form-control w-56 box border-white dark-border-dark-3 pe-10 placeholder-theme-13"
+          class="form-control w-56 box border-white dark-border-dark-3 pe-7 placeholder-theme-13"
           style="margin-left: 10px"
-          placeholder="Tìm kiếm theo người đặt..."
-          [(ngModel)]="searchCustomerName"
+          placeholder="Tìm kiếm theo mã đơn hàng..."
+          [(ngModel)]="searchOrdersCode"
         />
       </div>
       <div class="d-none d-md-block mx-auto text-gray-600">
@@ -166,7 +166,7 @@
         <thead>
           <tr>
             <th class="text-center text-nowrap w-20">Thứ tự</th>
-            <th class="text-wrap">Người đặt hàng</th>
+            <th class="text-wrap">Mã đơn hàng</th>
             <th class="text-center text-nowrap w-20">Ngày đặt (D/M/Y)</th>
             <!-- <th class="text-center text-nowrap w-10">Tổng tiền (VNĐ)</th> -->
             <th class="text-center text-nowrap w-56">Trạng thái</th>
@@ -182,7 +182,7 @@
                   : {
                       orderDate: searchText,
                       status: searchOrdersStatus,
-                      deliveryAddress: searchCustomerName
+                      ordersCode: searchOrdersCode
                     }
                 | paginate
                   : {
@@ -199,10 +199,11 @@
               {{ (page - 1) * pageSize + i + 1 }}
             </td>
             <td class="text-start">
-              {{ orders.deliveryAddress.customer.customerName }}
+              <!-- {{ orders.deliveryAddress.customer.customerName }} -->
+              {{ orders.ordersCode }}
             </td>
             <td class="text-center w-20">
-              {{ orders.orderDate.slice(0, 10) | date: "dd/MM/yyyy" }}
+              {{ orders.orderDate.slice(0, 10) | date : "dd/MM/yyyy" }}
             </td>
             <!-- <td class="text-center w-20">
               {{ orders.total | currency: "VND":"symbol" }}
@@ -217,11 +218,42 @@
                 >
                   <!-- ng-change="updateStatus(orders.id, orders)"
                   ng-model="orders.status" -->
-                  <option value="0">Chờ xác nhận</option>
-                  <option value="1">Chờ lấy hàng</option>
-                  <option value="2">Đang giao</option>
-                  <option value="3">Đã giao</option>
-                  <option value="4">Đã hủy</option>
+                  <option
+                    value="0"
+                    [disabled]="
+                      orders.status == 1 ||
+                      orders.status == 2 ||
+                      orders.status == 3 ||
+                      orders.status == 4
+                    "
+                  >
+                    Chờ xác nhận
+                  </option>
+                  <option
+                    value="1"
+                    [disabled]="
+                      orders.status == 2 ||
+                      orders.status == 3 ||
+                      orders.status == 4
+                    "
+                  >
+                    Chờ lấy hàng
+                  </option>
+                  <option
+                    value="2"
+                    [disabled]="orders.status == 3 || orders.status == 4"
+                  >
+                    Đang giao
+                  </option>
+                  <option value="3" [disabled]="orders.status == 4">
+                    Đã giao
+                  </option>
+                  <option
+                    value="4"
+                    [disabled]="orders.status == 2 || orders.status == 3"
+                  >
+                    Đã hủy
+                  </option>
                 </select>
               </div>
             </td>
@@ -421,7 +453,7 @@
                         </td>
                         <td class="text-center w-20">
                           {{
-                            ordersStatus.date.slice(0, 10) | date: "dd/MM/yyyy"
+                            ordersStatus.date.slice(0, 10) | date : "dd/MM/yyyy"
                           }}
                         </td>
                         <td class="table-report__action w-20">
@@ -502,6 +534,19 @@
                     style="background: #fff"
                     class="grid columns-12 gap-4 gap-y-3 w-full p-5"
                   >
+                    <div class="g-col-12 g-col-sm-12">
+                      <label for="modal-form-1" class="form-label"
+                        >Mã đơn hàng</label
+                      >
+                      <input
+                        id="modal-form-1"
+                        type="text"
+                        class="form-control"
+                        placeholder=""
+                        [value]="ordersForm.get('ordersCode')?.value"
+                        readonly
+                      />
+                    </div>
                     <div class="g-col-12 g-col-sm-6">
                       <label for="modal-form-1" class="form-label"
                         >Tên người nhận</label
@@ -529,7 +574,7 @@
                         placeholder=""
                         [value]="
                           ordersForm.get('orderDate')?.value.slice(0, 10)
-                            | date: 'dd/MM/yyyy'
+                            | date : 'dd/MM/yyyy'
                         "
                         readonly
                       />
@@ -617,7 +662,7 @@
                             placeholder=""
                             [value]="
                               ordersForm.get('transport')?.value.fee
-                                | currency: 'VND':'symbol'
+                                | currency : 'VND' : 'symbol'
                             "
                             readonly
                           />
@@ -637,7 +682,7 @@
                         placeholder=""
                         [value]="
                           ordersForm.get('total')?.value
-                            | currency: 'VND':'symbol'
+                            | currency : 'VND' : 'symbol'
                         "
                         readonly
                       />
@@ -663,11 +708,53 @@
                             >
                               <!-- ng-change="updateStatus(orders.id, orders)"
                             ng-model="orders.status" -->
-                              <option value="0">Chờ xác nhận</option>
-                              <option value="1">Chờ lấy hàng</option>
-                              <option value="2">Đang giao</option>
-                              <option value="3">Đã giao</option>
-                              <option value="4">Đã hủy</option>
+                              <option
+                                value="0"
+                                [disabled]="
+                                  ordersForm.get('status')?.value == 1 ||
+                                  ordersForm.get('status')?.value == 2 ||
+                                  ordersForm.get('status')?.value == 3 ||
+                                  ordersForm.get('status')?.value == 4
+                                "
+                              >
+                                Chờ xác nhận
+                              </option>
+                              <option
+                                value="1"
+                                [disabled]="
+                                  ordersForm.get('status')?.value == 2 ||
+                                  ordersForm.get('status')?.value == 3 ||
+                                  ordersForm.get('status')?.value == 4
+                                "
+                              >
+                                Chờ lấy hàng
+                              </option>
+                              <option
+                                value="2"
+                                [disabled]="
+                                  ordersForm.get('status')?.value == 3 ||
+                                  ordersForm.get('status')?.value == 4
+                                "
+                              >
+                                Đang giao
+                              </option>
+                              <option
+                                value="3"
+                                [disabled]="
+                                  ordersForm.get('status')?.value == 4
+                                "
+                              >
+                                Đã giao
+                              </option>
+                              <option
+                                value="4"
+                                [disabled]="
+                                  ordersForm.get('status')?.value == 2 ||
+                                  ordersForm.get('status')?.value == 3
+                                "
+                              >
+                                Đã hủy
+                              </option>
                             </select>
                           </div>
                         </div>
@@ -681,6 +768,7 @@
                               style="
                                 background: #fff;
                                 box-shadow: 0 3px 20px #0000000b;
+                                padding-right: 30px;
                               "
                               formControlName="paid"
                               required
@@ -714,8 +802,10 @@
                         <table class="table table-report mt-n2">
                           <thead>
                             <tr>
-                              <th class="text-wrap">Tên sản phẩm</th>
-                              <th class="text-wrap w-40">Màu sắc</th>
+                              <th class="text-wrap">Sản phẩm</th>
+                              <th class="text-wrap">Thành tiền</th>
+                              <th class="text-wrap">Trạng thái</th>
+                              <!-- <th class="text-wrap w-40">Màu sắc</th>
                               <th class="text-center text-nowrap w-20">
                                 Kích cỡ
                               </th>
@@ -724,27 +814,47 @@
                               </th>
                               <th class="text-center text-nowrap w-20">
                                 Đơn giá (VNĐ)
-                              </th>
+                              </th> -->
                             </tr>
                           </thead>
                           <tbody>
                             <!-- ng-cloak
                               ng-repeat="ordersDetail in orders.orders_details track by $index" -->
-                            <tr current-page="currentPage" class="intro-x">
+                            <tr
+                              *ngFor="let ordersDetail of ordersDetails"
+                              current-page="currentPage"
+                              class="intro-x"
+                            >
                               <td class="text-start">
+                                <div style="font-weight: bold">
+                                  {{ ordersDetail.product.productName }}
+                                </div>
+                                <div>
+                                  {{ ordersDetail.color.colorName }}/{{
+                                    ordersDetail.size.sizeName
+                                  }}/x{{ ordersDetail.quantity }}/{{
+                                    ordersDetail.price | number
+                                  }}
+                                </div>
                                 <!-- @{{ ordersDetail.product.product_name }} -->
                               </td>
+                              <td>
+                                {{
+                                  ordersDetail.price * ordersDetail.quantity
+                                    | number
+                                }}
+                              </td>
                               <td class="text-start w-40">
+                                {{
+                                  ordersDetail.status == 0
+                                    ? "Hoàn thành"
+                                    : ordersDetail.status == 1
+                                    ? "Yêu cầu trả hàng/hoàn tiền"
+                                    : ordersDetail.status == 2
+                                    ? "Yêu cầu đổi size"
+                                    : ""
+                                }}
                                 <!-- @{{ ordersDetail.color.color_name }} -->
-                              </td>
-                              <td class="text-center w-20">
-                                <!-- @{{ ordersDetail.size.size_name }} -->
-                              </td>
-                              <td class="text-center w-20">
-                                <!-- @{{ ordersDetail.quantity }} -->
-                              </td>
-                              <td class="text-center w-20">
-                                <!-- @{{ ordersDetail.price | currency: "":0 }} -->
                               </td>
                             </tr>
                           </tbody>

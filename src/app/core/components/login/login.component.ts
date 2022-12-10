@@ -112,10 +112,11 @@ export class LoginComponent extends BaseComponent implements OnInit, AfterViewIn
       .subscribe({
         next: (res) => {
           // localStorage.setItem("id_token", JSON.stringify(res.token));
-          this.ngZone.run(() => this.router.navigateByUrl('')) .then(() => {
+          // this.ngZone.run(() => this.router.navigateByUrl('')) .then(() => {
           
                
-          });
+          // });
+          this.getMe()
           // this.router.navigate([''])
         },
         error: (err) => {
@@ -126,6 +127,18 @@ export class LoginComponent extends BaseComponent implements OnInit, AfterViewIn
     } else {
       alert("Hãy nhập đầy đủ thông tin để đăng nhập !");
     }
+  }
+
+  getMe() {
+    this.userService.getMe()
+     .subscribe((res) => {
+        if(res.staff) {
+          this.ngZone.run(() => this.router.navigateByUrl('')) .then(() => {
+          });
+        } else {
+          alert("Thông tin đăng nhập không chính xác")
+        }
+      })
   }
 
   
