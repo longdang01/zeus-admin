@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Injector, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ResolveStart, Router } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ColorService } from 'src/app/core/services/color.service';
@@ -74,23 +74,23 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
     super(injector);
 
     this.productForm = this.formBuilder.group({
-      subCategory: [''],
-      brand: [''],
-      collectionInfo: [''],
-      supplier: [''],
-      productName: [''],
-      origin: [''],
-      material: [''],
-      style: [''],
+      subCategory: ['', [Validators.required]],
+      brand: ['', [Validators.required]],
+      collectionInfo: ['', [Validators.required]],
+      supplier: ['', [Validators.required]],
+      productName: ['', [Validators.required]],
+      origin: ['', [Validators.required]],
+      material: ['', [Validators.required]],
+      style: ['', [Validators.required]],
       sizeGuide: [''],
       description: [''],
     })
 
     this.colorForm = this.formBuilder.group({
       product: this.productId,
-      price: [''],
-      colorName: [''],
-      hex: ['']
+      price: ['', [Validators.required]],
+      colorName: ['', [Validators.required]],
+      hex: ['', [Validators.required]]
     })
 
     this.sizeForm = this.formBuilder.group({
@@ -182,14 +182,14 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
 
     if(!id) {
       this.productForm = this.formBuilder.group({
-        subCategory: [''],
-        brand: [''],
-        collectionInfo: [''],
-        supplier: [''],
-        productName: [''],
-        origin: [''],
-        material: [''],
-        style: [''],
+        subCategory: ['', [Validators.required]],
+        brand: ['', [Validators.required]],
+        collectionInfo: ['',[Validators.required]],
+        supplier: ['',[Validators.required]],
+        productName: ['',[Validators.required]],
+        origin: ['',[Validators.required]],
+        material: ['',[Validators.required]],
+        style: ['',[Validators.required]],
         sizeGuide: [''],
         description: [''],
       })
@@ -360,6 +360,12 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
 
   createColor() {
     this.setPickColor();
+
+    if(!this.colorForm.valid) {
+      alert("Vui lòng điền đầy đủ thông tin !")
+      return;
+    }
+
     this.colorService.create(this.colorForm.value)
     .subscribe({
       next: (res) => {
@@ -381,7 +387,10 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
 
   updateColor() {
     this.setPickColor();
-
+    if(!this.colorForm.valid) {
+      alert("Vui lòng điền đầy đủ thông tin !")
+      return;
+    }
     this.colorService.update(this.colorId, this.colorForm.value)
     .subscribe(
       {
@@ -427,9 +436,9 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
         btnCreateColor.parents('.grid').siblings('.table__sub').find('tr').removeClass('active');
         this.colorForm = this.formBuilder.group({
           product: this.productId,
-          price: [''],
-          colorName: [''],
-          hex: ['']
+          price: ['', [Validators.required]],
+          colorName: ['', [Validators.required]],
+          hex: ['', [Validators.required]]
         })
         $(".choose-color").css('background', 'transparent')
     }

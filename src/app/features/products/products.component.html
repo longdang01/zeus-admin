@@ -532,7 +532,7 @@
                     >
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-2" class="form-label"
-                          >Tên sản phẩm</label
+                          >Tên sản phẩm (*)</label
                         >
                         <input
                           id="modal-form-2"
@@ -541,11 +541,40 @@
                           placeholder="T-SHIRT LOGO X ZEUS, SKINNY FIT JEANS"
                           formControlName="productName"
                           required
+                          [class.valid]="
+                            productForm.get('productName')!.valid &&
+                            (productForm.get('productName')!.dirty ||
+                              productForm.get('productName')!.touched)
+                          "
+                          [class.invalid]="
+                            productForm.get('productName')!.invalid &&
+                            (productForm.get('productName')!.dirty ||
+                              productForm.get('productName')!.touched)
+                          "
                         />
+                        <div
+                          *ngIf="
+                            productForm.get('productName')!.invalid &&
+                            productForm.get('productName')!.errors &&
+                            (productForm.get('productName')!.dirty ||
+                              productForm.get('productName')!.touched)
+                          "
+                        >
+                          <small
+                            class="text-danger"
+                            *ngIf="
+                              productForm
+                                .get('productName')!
+                                .hasError('required')
+                            "
+                          >
+                            Trường này bắt buộc.
+                          </small>
+                        </div>
                       </div>
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-3" class="form-label"
-                          >Nguồn gốc</label
+                          >Nguồn gốc (*)</label
                         >
                         <input
                           id="modal-form-3"
@@ -554,11 +583,38 @@
                           placeholder="Việt Nam, USA"
                           formControlName="origin"
                           required
+                          [class.valid]="
+                            productForm.get('origin')!.valid &&
+                            (productForm.get('origin')!.dirty ||
+                              productForm.get('origin')!.touched)
+                          "
+                          [class.invalid]="
+                            productForm.get('origin')!.invalid &&
+                            (productForm.get('origin')!.dirty ||
+                              productForm.get('origin')!.touched)
+                          "
                         />
+                        <div
+                          *ngIf="
+                            productForm.get('origin')!.invalid &&
+                            productForm.get('origin')!.errors &&
+                            (productForm.get('origin')!.dirty ||
+                              productForm.get('origin')!.touched)
+                          "
+                        >
+                          <small
+                            class="text-danger"
+                            *ngIf="
+                              productForm.get('origin')!.hasError('required')
+                            "
+                          >
+                            Trường này bắt buộc.
+                          </small>
+                        </div>
                       </div>
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-4" class="form-label"
-                          >Chất liệu</label
+                          >Chất liệu (*)</label
                         >
                         <input
                           id="modal-form-4"
@@ -567,11 +623,38 @@
                           placeholder="Cotton, Nỉ bông"
                           formControlName="material"
                           required
+                          [class.valid]="
+                            productForm.get('material')!.valid &&
+                            (productForm.get('material')!.dirty ||
+                              productForm.get('material')!.touched)
+                          "
+                          [class.invalid]="
+                            productForm.get('material')!.invalid &&
+                            (productForm.get('material')!.dirty ||
+                              productForm.get('material')!.touched)
+                          "
                         />
+                        <div
+                          *ngIf="
+                            productForm.get('material')!.invalid &&
+                            productForm.get('material')!.errors &&
+                            (productForm.get('material')!.dirty ||
+                              productForm.get('material')!.touched)
+                          "
+                        >
+                          <small
+                            class="text-danger"
+                            *ngIf="
+                              productForm.get('material')!.hasError('required')
+                            "
+                          >
+                            Trường này bắt buộc.
+                          </small>
+                        </div>
                       </div>
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-5" class="form-label"
-                          >Phong cách</label
+                          >Phong cách (*)</label
                         >
                         <input
                           id="modal-form-5"
@@ -580,17 +663,54 @@
                           placeholder="StreetWear, Lịch thiệp"
                           formControlName="style"
                           required
+                          [class.valid]="
+                            productForm.get('style')!.valid &&
+                            (productForm.get('style')!.dirty ||
+                              productForm.get('style')!.touched)
+                          "
+                          [class.invalid]="
+                            productForm.get('style')!.invalid &&
+                            (productForm.get('style')!.dirty ||
+                              productForm.get('style')!.touched)
+                          "
                         />
+                        <div
+                          *ngIf="
+                            productForm.get('style')!.invalid &&
+                            productForm.get('style')!.errors &&
+                            (productForm.get('style')!.dirty ||
+                              productForm.get('style')!.touched)
+                          "
+                        >
+                          <small
+                            class="text-danger"
+                            *ngIf="
+                              productForm.get('style')!.hasError('required')
+                            "
+                          >
+                            Trường này bắt buộc.
+                          </small>
+                        </div>
                       </div>
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-6" class="form-label"
-                          >Danh mục</label
+                          >Danh mục (*)</label
                         >
                         <div class="">
                           <select
                             class="form-select w-full"
                             formControlName="subCategory"
                             required
+                            [class.valid]="
+                              productForm.get('subCategory')!.valid &&
+                              (productForm.get('subCategory')!.dirty ||
+                                productForm.get('subCategory')!.touched)
+                            "
+                            [class.invalid]="
+                              productForm.get('subCategory')!.invalid &&
+                              (productForm.get('subCategory')!.dirty ||
+                                productForm.get('subCategory')!.touched)
+                            "
                           >
                             <option style="display: none" value="">
                               Chọn danh mục
@@ -613,16 +733,45 @@
                               </option>
                             </optgroup>
                           </select>
+                          <div
+                            *ngIf="
+                              productForm.get('subCategory')!.invalid &&
+                              productForm.get('subCategory')!.errors &&
+                              (productForm.get('subCategory')!.dirty ||
+                                productForm.get('subCategory')!.touched)
+                            "
+                          >
+                            <small
+                              class="text-danger"
+                              *ngIf="
+                                productForm
+                                  .get('subCategory')!
+                                  .hasError('required')
+                              "
+                            >
+                              Trường này bắt buộc.
+                            </small>
+                          </div>
                         </div>
                       </div>
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-6" class="form-label"
-                          >Thương hiệu</label
+                          >Thương hiệu (*)</label
                         >
                         <select
                           class="form-select w-full"
                           formControlName="brand"
                           required
+                          [class.valid]="
+                            productForm.get('brand')!.valid &&
+                            (productForm.get('brand')!.dirty ||
+                              productForm.get('brand')!.touched)
+                          "
+                          [class.invalid]="
+                            productForm.get('brand')!.invalid &&
+                            (productForm.get('brand')!.dirty ||
+                              productForm.get('brand')!.touched)
+                          "
                         >
                           <option style="display: none" value="">
                             Chọn thương hiệu
@@ -635,15 +784,42 @@
                             {{ brand.brandName }}
                           </option>
                         </select>
+                        <div
+                          *ngIf="
+                            productForm.get('brand')!.invalid &&
+                            productForm.get('brand')!.errors &&
+                            (productForm.get('brand')!.dirty ||
+                              productForm.get('brand')!.touched)
+                          "
+                        >
+                          <small
+                            class="text-danger"
+                            *ngIf="
+                              productForm.get('brand')!.hasError('required')
+                            "
+                          >
+                            Trường này bắt buộc.
+                          </small>
+                        </div>
                       </div>
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-6" class="form-label"
-                          >Nhà cung cấp</label
+                          >Nhà cung cấp (*)</label
                         >
                         <select
                           class="form-select w-full"
                           formControlName="supplier"
                           required
+                          [class.valid]="
+                            productForm.get('supplier')!.valid &&
+                            (productForm.get('supplier')!.dirty ||
+                              productForm.get('supplier')!.touched)
+                          "
+                          [class.invalid]="
+                            productForm.get('supplier')!.invalid &&
+                            (productForm.get('supplier')!.dirty ||
+                              productForm.get('supplier')!.touched)
+                          "
                         >
                           <option style="display: none" value="">
                             Chọn nhà cung cấp
@@ -658,15 +834,42 @@
                             {{ supplier.supplierName }}
                           </option>
                         </select>
+                        <div
+                          *ngIf="
+                            productForm.get('supplier')!.invalid &&
+                            productForm.get('supplier')!.errors &&
+                            (productForm.get('supplier')!.dirty ||
+                              productForm.get('supplier')!.touched)
+                          "
+                        >
+                          <small
+                            class="text-danger"
+                            *ngIf="
+                              productForm.get('supplier')!.hasError('required')
+                            "
+                          >
+                            Trường này bắt buộc.
+                          </small>
+                        </div>
                       </div>
                       <div class="g-col-12 g-col-sm-6">
                         <label for="modal-form-6" class="form-label"
-                          >Bộ sưu tập</label
+                          >Bộ sưu tập (*)</label
                         >
                         <select
                           class="form-select w-full"
                           formControlName="collectionInfo"
                           required
+                          [class.valid]="
+                            productForm.get('collectionInfo')!.valid &&
+                            (productForm.get('collectionInfo')!.dirty ||
+                              productForm.get('collectionInfo')!.touched)
+                          "
+                          [class.invalid]="
+                            productForm.get('collectionInfo')!.invalid &&
+                            (productForm.get('collectionInfo')!.dirty ||
+                              productForm.get('collectionInfo')!.touched)
+                          "
                         >
                           <option style="display: none" value="">
                             Chọn bộ sưu tập
@@ -682,6 +885,25 @@
                             {{ collection.collectionName }}
                           </option>
                         </select>
+                        <div
+                          *ngIf="
+                            productForm.get('collectionInfo')!.invalid &&
+                            productForm.get('collectionInfo')!.errors &&
+                            (productForm.get('collectionInfo')!.dirty ||
+                              productForm.get('collectionInfo')!.touched)
+                          "
+                        >
+                          <small
+                            class="text-danger"
+                            *ngIf="
+                              productForm
+                                .get('collectionInfo')!
+                                .hasError('required')
+                            "
+                          >
+                            Trường này bắt buộc.
+                          </small>
+                        </div>
                       </div>
                       <div class="g-col-12">
                         <label for="modal-form-5" class="form-label"
@@ -693,6 +915,7 @@
                             type="file"
                             class="form-control mb-2"
                             (change)="loadImage($event)"
+                            accept="image/*"
                           />
                           <img
                             id="sizeGuideImage"
@@ -740,6 +963,7 @@
               type="button"
               class="btn btn-primary w-20"
               (click)="upload(postSizeGuideImage)"
+              [disabled]="productForm.invalid"
             >
               Lưu
             </button>

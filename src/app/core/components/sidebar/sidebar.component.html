@@ -5,7 +5,7 @@
       class="w-6"
       src="/assets/images/logo.svg"
     />
-    <span class="d-none d-xl-block text-white fs-lg ms-3"> Zeus. </span>
+    <span class="d-none d-xl-block text-white fs-lg ms-3"> Fragile. </span>
   </a>
   <div class="side-nav__devider my-6"></div>
   <ul>
@@ -263,7 +263,10 @@
       <a
         href="javascript:;"
         class="side-menu side-menu--open"
-        [ngClass]="[router.isActive('/news', true) ? 'side-menu--active' : '']"
+        [ngClass]="[
+          router.isActive('/news', true) ? 'side-menu--active' : '',
+          router.isActive('/slides', true) ? 'side-menu--active' : ''
+        ]"
       >
         <div class="side-menu__icon">
           <i data-feather="box"></i>

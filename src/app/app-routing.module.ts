@@ -4,7 +4,12 @@ import { LoginComponent } from './core/components/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent  },
+  // { path: 'login', component: LoginComponent  },
+  { 
+    path: 'login', 
+    loadChildren: () => import('./features/login/login.module')
+    .then(m => m.LoginModule)
+  },
   { 
     path: '', loadChildren: () => 
     import('./features/main/main.module').then(m => m.MainModule),

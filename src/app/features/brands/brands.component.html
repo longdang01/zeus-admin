@@ -149,7 +149,7 @@
           <tr
             *ngFor="
               let brand of brands
-                | filter: { brandName: searchText }
+                | filter : { brandName: searchText }
                 | paginate
                   : {
                       itemsPerPage: pageSize,
@@ -316,7 +316,7 @@
                           id="modal-form-1"
                           type="text"
                           class="form-control"
-                          placeholder="Zeus, Maverik"
+                          placeholder="Fragile, Maverik"
                           formControlName="brandName"
                           required
                         />

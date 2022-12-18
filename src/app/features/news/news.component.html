@@ -162,7 +162,7 @@
           <tr
             *ngFor="
               let news of newsList
-                | filter: { title: searchText, datePost: searchDatePost }
+                | filter : { title: searchText, datePost: searchDatePost }
                 | paginate
                   : {
                       itemsPerPage: pageSize,
@@ -181,7 +181,7 @@
               {{ news.title }}
             </td>
             <td class="text-center">
-              {{ news.datePost.slice(0, 10) | date: "dd/MM/yyyy" }}
+              {{ news.datePost.slice(0, 10) | date : "dd/MM/yyyy" }}
             </td>
             <td class="table-report__action w-40">
               <div class="d-flex justify-content-center align-items-center">
@@ -336,7 +336,7 @@
                           id="modal-form-1"
                           type="text"
                           class="form-control"
-                          placeholder="Thời trang mùa đông theo phong cách của nhà Zeus, ..."
+                          placeholder="Thời trang mùa đông theo phong cách của nhà Fragile, ..."
                           formControlName="title"
                           required
                         />
