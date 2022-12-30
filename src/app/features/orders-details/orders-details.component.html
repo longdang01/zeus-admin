@@ -191,7 +191,7 @@
             <td class="text-start">
               {{
                 ordersDetail.status == 0
-                  ? "Hoàn thành"
+                  ? "Hàng không có vấn đề"
                   : ordersDetail.status == 1
                   ? "Yêu cầu trả hàng/hoàn tiền"
                   : ordersDetail.status == 2
@@ -472,7 +472,7 @@
                           placeholder=""
                           [value]="
                             ordersDetailForm.get('status')?.value == 0
-                              ? 'Hoàn thành'
+                              ? 'Hàng không có vấn đề'
                               : ordersDetailForm.get('status')?.value == 1
                               ? 'Yêu cầu hoàn/trả'
                               : ordersDetailForm.get('status')?.value == 2

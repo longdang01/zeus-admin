@@ -176,7 +176,9 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
           '/assets/js/farbtastic.js',
           '/assets/js/ntc_main.js',
         ];
-        this.loadScripts(dynamicScripts); 
+        setTimeout(() => {
+          this.loadScripts(dynamicScripts); 
+        }, 300);
       });
     } 
 
