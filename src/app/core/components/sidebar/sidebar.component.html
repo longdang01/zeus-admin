@@ -34,6 +34,7 @@
         class="side-menu side-menu--open"
         [ngClass]="[
           router.isActive('/products', true) ? 'side-menu--active' : '',
+          router.isActive('/import-products', true) ? 'side-menu--active' : '',
           router.isActive('/categories', true) ? 'side-menu--active' : '',
           router.isActive('/brands', true) ? 'side-menu--active' : '',
           router.isActive('/suppliers', true) ? 'side-menu--active' : '',
@@ -62,6 +63,19 @@
               <i data-feather="activity"></i>
             </div>
             <div class="side-menu__title">Sản Phẩm</div>
+          </a>
+        </li>
+        <li>
+          <a
+            href=""
+            class="side-menu"
+            routerLink="/import-products"
+            routerLinkActive="side-menu--active"
+          >
+            <div class="side-menu__icon">
+              <i data-feather="activity"></i>
+            </div>
+            <div class="side-menu__title">Kho</div>
           </a>
         </li>
         <li>

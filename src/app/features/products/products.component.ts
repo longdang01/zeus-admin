@@ -5,6 +5,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ColorService } from 'src/app/core/services/color.service';
 import { ColorImageService } from 'src/app/core/services/colorImage.service';
 import { DiscountService } from 'src/app/core/services/discount.service';
+import { ImportProductService } from 'src/app/core/services/importProduct.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { SizeService } from 'src/app/core/services/size.service';
 import { UploadService } from 'src/app/core/services/upload.service';
@@ -20,6 +21,7 @@ declare var $: any;
 export class ProductsComponent extends BaseComponent implements OnInit, AfterViewInit {
   
 
+  selectedQuantity!: any;
   // filter
   searchText: string = "" ;
 
@@ -61,6 +63,7 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
 
   constructor(private productService: ProductService,
     private colorService: ColorService,
+    private importProductService: ImportProductService,
     private discountService: DiscountService,
     private sizeService: SizeService,
     private colorImageService: ColorImageService,
@@ -89,6 +92,7 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
     this.colorForm = this.formBuilder.group({
       product: this.productId,
       price: ['', [Validators.required]],
+      priceImport: ['', [Validators.required]],
       colorName: ['', [Validators.required]],
       hex: ['', [Validators.required]]
     })
@@ -97,6 +101,7 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
       color: this.colorId,
       sizeName: [''],
       quantity: [''],
+      isActive: [''],
     })
 
     this.discountForm = this.formBuilder.group({
@@ -329,6 +334,7 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
       this.colorForm.setValue({
         product: this.productId,
         price: res['price'],
+        priceImport: res['priceImport'],
         colorName: res['colorName'],
         hex: res['hex'],
       }); 
@@ -439,6 +445,7 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
         this.colorForm = this.formBuilder.group({
           product: this.productId,
           price: ['', [Validators.required]],
+          priceImport: ['', [Validators.required]],
           colorName: ['', [Validators.required]],
           hex: ['', [Validators.required]]
         })
@@ -461,16 +468,19 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
     this.actionSize(1);
 
     this.sizeService.getById(id).subscribe(res => {
+      this.selectedQuantity = res['quantity'];
 
       this.sizeForm.setValue({
         color: this.colorId,
         sizeName: res['sizeName'],
         quantity: res['quantity'],
+        isActive: res['isActive'],
       }); 
     });
   }
 
   createSize() {
+    this.sizeForm.controls['isActive'].setValue(0);
     this.sizeService.create(this.sizeForm.value)
     .subscribe({
       next: (res) => {
@@ -495,6 +505,37 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
   }
 
   updateSize() {
+    const quantity = this.sizeForm.get('quantity')?.value;
+    const status = this.sizeForm.get('isActive')?.value;
+    if(status == 1 && quantity > this.selectedQuantity) {
+      const postImportProd:any = {
+        staff: localStorage.getItem('staff'),
+        date: new Date().toISOString().slice(0, 10),
+        product: this.productId,
+        color: this.colorId,
+        size: this.sizeId,
+        price: this.colorForm.get('priceImport')?.value,
+        quantity: Number(quantity) - Number(this.selectedQuantity),
+        isActive: 0
+      }
+  
+      this.importProductService.create(postImportProd)
+      .subscribe({
+        next: (res) => {
+          alert("Thêm đơn restock thành công")
+          this.sizeForm.controls['isActive'].setValue(1);
+          this.runUpdateSize();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });      
+    } else {
+      this.runUpdateSize();
+    }
+  }
+
+  runUpdateSize() {
     this.sizeService.update(this.sizeId, this.sizeForm.value)
     .subscribe(
       {
@@ -555,6 +596,7 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
         color: this.colorId,
         sizeName: [''],
         quantity: [''],
+        isActive: [''],
       })
     }
 

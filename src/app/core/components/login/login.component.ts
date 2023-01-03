@@ -133,6 +133,8 @@ export class LoginComponent extends BaseComponent implements OnInit, AfterViewIn
     this.userService.getMe()
      .subscribe((res) => {
         if(res.staff) {
+          localStorage.setItem('staff', res.staff._id);
+
           this.ngZone.run(() => this.router.navigateByUrl('')) .then(() => {
           });
         } else {

@@ -25,6 +25,7 @@ export class FilterPipe implements PipeTransform {
     const condition = (item: any) => keys.every(key => { 
       if(key == 'orderDate' || key == 'datePost') return item[key].slice(0, 10) === filters[key].slice(0, 10)
       else if(key == 'status') return Number(item[key]) === Number(filters[key])
+      else if(key == 'isActive') return Number(item[key]) === Number(filters[key])
       else if(key == 'deliveryAddress') return item[key].customer.customerName.toLowerCase().includes(filters[key].toLowerCase())
       else return item[key].toLowerCase().includes(filters[key].toLowerCase())
       

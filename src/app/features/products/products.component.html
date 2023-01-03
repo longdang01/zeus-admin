@@ -371,7 +371,16 @@
                           <input
                             type="text"
                             class="form-control"
-                            placeholder="Đơn giá: 390.000 VND, 480.000 VND"
+                            placeholder="Đơn giá nhập: 390.000 VND, 480.000 VND"
+                            formControlName="priceImport"
+                            required
+                          />
+                        </div>
+                        <div class="g-col-12 g-col-sm-12">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Đơn giá bán: 390.000 VND, 480.000 VND"
                             formControlName="price"
                             required
                           />
@@ -403,7 +412,8 @@
                         <tr>
                           <th class="text-wrap">Tên màu sắc</th>
                           <th class="text-center text-nowrap w-20">Màu</th>
-                          <th class="text-center text-nowrap w-20">Đơn giá</th>
+                          <th class="text-center text-nowrap w-20">Giá nhập</th>
+                          <th class="text-center text-nowrap w-20">Giá bán</th>
                           <th class="text-center text-nowrap w-20">
                             Hành động
                           </th>
@@ -424,10 +434,11 @@
                           </td>
                           <td class="text-center w-20">
                             {{
-                              color.price == null
-                                ? "(chưa có giá)"
-                                : (color.price | currency : "VND" : "symbol")
+                              color.priceImport | currency : "VND" : "symbol"
                             }}
+                          </td>
+                          <td class="text-center w-20">
+                            {{ color.price | currency : "VND" : "symbol" }}
                           </td>
                           <td class="table-report__action w-20">
                             <div
@@ -1216,6 +1227,7 @@
                         required
                       />
                     </div>
+
                     <div class="g-col-12 d-flex justify-content-start">
                       <button
                         class="btn btn-secondary btn__manage btn__create-size me-1 mb-2"

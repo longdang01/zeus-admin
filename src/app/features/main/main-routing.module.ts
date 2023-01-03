@@ -78,7 +78,8 @@ const routes: Routes = [
       // },
       { path: 'customers', loadChildren: () => import('../customers/customers.module').then(m => m.CustomersModule) },
       { path: 'slides', loadChildren: () => import('../slides/slides.module').then(m => m.SlidesModule) },
-      { path: 'ordersDetails', loadChildren: () => import('../orders-details/orders-details.module').then(m => m.OrdersDetailsModule) }
+      { path: 'ordersDetails', loadChildren: () => import('../orders-details/orders-details.module').then(m => m.OrdersDetailsModule) },
+      { path: 'import-products', loadChildren: () => import('../import-products/import-products.module').then(m => m.ImportProductsModule) },
     ]
   },
 ];
