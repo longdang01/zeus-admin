@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Injector, OnInit } from '@angular/core';
+import { UserService } from 'src/app/core/services/user.service';
 import { BaseComponent } from 'src/app/core/utils/base.component';
 declare var $: any;
 @Component({
@@ -7,13 +8,30 @@ declare var $: any;
   styleUrls: ['./main.component.css']
 })
 export class MainComponent extends BaseComponent implements OnInit, AfterViewInit {
+  staff: any = {};
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector,
+    private userService: UserService,
+    ) {
     super(injector);
     
   }
   
+  getMe() {
+    this.userService.getMe()
+     .subscribe((res) => {
+        if(res.staff) {
+          this.staff = res.staff;
+        } else {
+          alert("Thông tin đăng nhập không chính xác")
+        }
+      })
+  }
+
   ngOnInit(): void {
+    $(document).ready(() => {
+      this.getMe();
+
       const dynamicScripts = [
         '/assets/js/app.js',
         // '/assets/js/jquery-3.6.0.min.js',
@@ -21,12 +39,16 @@ export class MainComponent extends BaseComponent implements OnInit, AfterViewIni
         // '/assets/js/main.js',
         // '/assets/js/ntc.js',
         ];
-      if ($('script[src="/assets/js/app.js"]').length <= 0) {
-        this.loadScripts(dynamicScripts); 
-      } else {
-        $('script[src*="/assets/js/app.js"]').remove();
-        this.loadScripts(dynamicScripts); 
-      }
+        setTimeout(() => {
+          if ($('script[src="/assets/js/app.js"]').length <= 0) {
+            this.loadScripts(dynamicScripts); 
+          } else {
+            $('script[src*="/assets/js/app.js"]').remove();
+              this.loadScripts(dynamicScripts); 
+          }
+          
+        }, 1000);
+    })
   }
 
   ngAfterViewInit(): void {

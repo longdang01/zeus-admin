@@ -41,7 +41,8 @@ export class RolesComponent implements OnInit {
  
     this.roleForm = this.formBuilder.group({
       roleName: [''],
-      description: ['']
+      description: [''],
+      isActive: ['']
     })
   }
 
@@ -54,6 +55,16 @@ export class RolesComponent implements OnInit {
     $(id).removeClass("show");
   }
   
+  changeRoleType = (event: any) => {
+    const val = (event.target.value == 0) ? "Quản trị viên" :
+     (event.target.value == 1) ? "Nhập hàng" :
+     (event.target.value == 2) ? "Bán hàng" : 
+     (event.target.value == 3) ? "Người dùng" :
+     (event.target.value == 4) ? "Nội dung" : "Vai trò chưa xây dựng";
+
+     this.roleForm.controls['roleName'].setValue(val);
+  }
+
   //Roles
   getRoles() {
     this.roleService.get().subscribe((res: any) => {
@@ -72,7 +83,8 @@ export class RolesComponent implements OnInit {
  
         this.roleForm.setValue({
           roleName: res['roleName'],
-          description: res['description']
+          description: res['description'],
+          isActive: res['isActive']
         });
       });
     } 
@@ -80,7 +92,8 @@ export class RolesComponent implements OnInit {
     if(!id) {
       this.roleForm = this.formBuilder.group({
         roleName: [''],
-        description: ['']
+        description: [''],
+        isActive: ['']
       })
     }
 

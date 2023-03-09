@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     TopBarComponent,
     SidebarComponent,
     LoginComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

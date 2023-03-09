@@ -151,7 +151,7 @@
           <tr
             *ngFor="
               let role of roles
-                | filter: { roleName: searchText }
+                | filter : { roleName: searchText }
                 | paginate
                   : {
                       itemsPerPage: pageSize,
@@ -311,7 +311,7 @@
                       class="grid columns-12 gap-4 gap-y-3 w-full p-5"
                     >
                       <div class="g-col-12">
-                        <label for="modal-form-1" class="form-label"
+                        <!-- <label for="modal-form-1" class="form-label"
                           >Tên vai trò</label
                         >
                         <input
@@ -321,7 +321,51 @@
                           placeholder="Quản trị viên, Bán hàng, Nhập hàng"
                           formControlName="roleName"
                           required
-                        />
+                        /> -->
+                        <select
+                          formControlName="isActive"
+                          required
+                          class="form-select w-full"
+                          (change)="changeRoleType($event)"
+                        >
+                          <option
+                            style="display: none"
+                            value=""
+                            [selected]="roleForm.get('isActive')?.value == ''"
+                          >
+                            Chọn vai trò
+                          </option>
+                          <option
+                            [value]="0"
+                            [selected]="roleForm.get('isActive')?.value == 0"
+                          >
+                            Quản trị viên
+                          </option>
+                          <option
+                            [value]="1"
+                            [selected]="roleForm.get('isActive')?.value == 1"
+                          >
+                            Nhập hàng
+                          </option>
+                          <option
+                            [value]="2"
+                            [selected]="roleForm.get('isActive')?.value == 2"
+                          >
+                            Bán hàng
+                          </option>
+                          <!-- <option
+                            [value]="3"
+                            [selected]="roleForm.get('isActive')?.value == 3"
+                          >
+                            Người dùng
+                          </option> -->
+                          <option
+                            [value]="3"
+                            [selected]="roleForm.get('isActive')?.value == 4"
+                          >
+                            Nội dung
+                          </option>
+                        </select>
                       </div>
                       <div class="g-col-12">
                         <label for="modal-form-2" class="form-label"

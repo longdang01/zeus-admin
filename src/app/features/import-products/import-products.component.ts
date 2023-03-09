@@ -123,6 +123,7 @@ export class ImportProductsComponent implements OnInit {
           note: res['note'],
           isActive: res['isActive'],
         });
+        $('#importModal').modal('show');
       });
 
     } 
@@ -144,9 +145,8 @@ export class ImportProductsComponent implements OnInit {
       this.productService.get().subscribe((res: any) => {
         this.products = res.products;
       }); 
-
+      $('#importModal').modal('show');
     }
-    $('#importModal').modal('show');
   }
 
   createImportProduct() {

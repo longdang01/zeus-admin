@@ -134,7 +134,8 @@ export class LoginComponent extends BaseComponent implements OnInit, AfterViewIn
      .subscribe((res) => {
         if(res.staff) {
           localStorage.setItem('staff', res.staff._id);
-
+          localStorage.setItem('role', res.staff.role.isActive);
+          
           this.ngZone.run(() => this.router.navigateByUrl('')) .then(() => {
           });
         } else {

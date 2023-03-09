@@ -41,7 +41,8 @@ export class PaymentsComponent implements OnInit {
 
     this.paymentForm = this.formBuilder.group({
       paymentType: [''],
-      description: ['']
+      description: [''],
+      isActive: ['']
     })
   }
 
@@ -54,6 +55,14 @@ export class PaymentsComponent implements OnInit {
     $(id).removeClass("show");
   }
   
+  // changePaymentType = (event: any) => {
+  //   const val = (event.target.value == 1) ? "Thanh toán chuyển khoản" : "Thanh toán khi nhận hàng";
+
+    
+  //   $("#paymentTypeName").val(val);
+  //   this.paymentForm.controls['paymentType'].setValue(val);
+  // }
+
   //Payments
   getPayments() {
     this.paymentService.get().subscribe((res: any) => {
@@ -66,13 +75,14 @@ export class PaymentsComponent implements OnInit {
     this.title = (id) ? "Cập nhật hình thức thanh toán" : "Thêm hình thức thanh toán";
     this.state = (id) ? 1 : 0;
     this.paymentId = (id) && id;
-
+    // this.paymentForm.controls['isActive'].setValue("");
     if(id) {
       this.paymentService.getById(id).subscribe(res => {
 
         this.paymentForm.setValue({
           paymentType: res['paymentType'],
-          description: res['description']
+          description: res['description'],
+          isActive: res['isActive']
         });
       });
     } 
@@ -80,10 +90,11 @@ export class PaymentsComponent implements OnInit {
     if(!id) {
       this.paymentForm = this.formBuilder.group({
         paymentType: [''],
-        description: ['']
+        description: [''],
+        isActive: ['']
       })
-    }
 
+    }
     $('#paymentModal').modal('show');
   }
 

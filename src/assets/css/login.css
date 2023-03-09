@@ -1,3 +1,4 @@
-body:has(.login) {
+body:has(.login),
+body:has(.notFound) {
   padding: 0 !important;
 }

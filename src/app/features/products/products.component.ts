@@ -301,6 +301,7 @@ export class ProductsComponent extends BaseComponent implements OnInit, AfterVie
 
   loadImage(event: any) {
     $('#sizeGuideImage').css('display', 'block');
+    
     this.readUrl($(event.target)[0].files[0], '#sizeGuideImage');
     this.postSizeGuideImage = $(event.target)[0].files[0];
   }

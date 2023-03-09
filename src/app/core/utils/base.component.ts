@@ -62,10 +62,10 @@ export class BaseComponent {
     //   }
 
     public loadScripts(list: string[] ) {
-        list.forEach(x=> {
-            this.renderExternalScript(x).onload = () => {
-            }
-        })
+            list.forEach(x=> {
+                this.renderExternalScript(x).onload = () => {
+                }
+            })
     }
     public renderExternalScript(src: string): HTMLScriptElement {
         // this.stripScripts('<span><script type="text/javascript">alert(\'foo\');<\/script><\/span>')

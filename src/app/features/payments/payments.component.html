@@ -149,7 +149,7 @@
           <tr
             *ngFor="
               let payment of payments
-                | filter: { paymentType: searchText }
+                | filter : { paymentType: searchText }
                 | paginate
                   : {
                       itemsPerPage: pageSize,
@@ -313,13 +313,56 @@
                           >Hình thức thanh toán</label
                         >
                         <input
-                          id="modal-form-1"
+                          id="paymentTypeName"
                           type="text"
                           class="form-control"
                           placeholder="Thanh toán khi nhận hàng, Thanh toán bằng thẻ"
                           formControlName="paymentType"
                           required
                         />
+                        <!-- readonly -->
+                      </div>
+                      <div class="g-col-12">
+                        <select
+                          formControlName="isActive"
+                          required
+                          class="form-select w-full"
+                        >
+                          <!-- (change)="changePaymentType($event)" -->
+                          <option
+                            style="display: none"
+                            value=""
+                            [selected]="
+                              paymentForm.get('isActive')?.value == ''
+                            "
+                          >
+                            Chọn hình thức thanh toán
+                          </option>
+                          <option
+                            [value]="0"
+                            [selected]="paymentForm.get('isActive')?.value == 0"
+                          >
+                            Ship COD
+                          </option>
+                          <option
+                            [value]="1"
+                            [selected]="paymentForm.get('isActive')?.value == 1"
+                          >
+                            Chuyển khoản
+                          </option>
+                          <option
+                            [value]="2"
+                            [selected]="paymentForm.get('isActive')?.value == 2"
+                          >
+                            Paypal
+                          </option>
+                          <option
+                            [value]="3"
+                            [selected]="paymentForm.get('isActive')?.value == 3"
+                          >
+                            Momo
+                          </option>
+                        </select>
                       </div>
                       <div class="g-col-12">
                         <label for="modal-form-2" class="form-label"

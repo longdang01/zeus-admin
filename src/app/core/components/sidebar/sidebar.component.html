@@ -28,7 +28,7 @@
       </a>
     </li>
     <li class="side-nav__devider my-6"></li>
-    <li>
+    <li *ngIf="staff.role?.isActive == 0 || staff.role?.isActive == 1">
       <a
         href="javascript:;"
         class="side-menu side-menu--open"
@@ -138,8 +138,8 @@
         </li>
       </ul>
     </li>
-    <li class="side-nav__devider my-6"></li>
-    <li>
+    <li *ngIf="staff.role?.isActive == 0" class="side-nav__devider my-6"></li>
+    <li *ngIf="staff.role?.isActive == 0 || staff.role?.isActive == 2">
       <a
         href="javascript:;"
         class="side-menu side-menu--open"
@@ -229,8 +229,8 @@
         </li>
       </ul>
     </li>
-    <li class="side-nav__devider my-6"></li>
-    <li>
+    <li *ngIf="staff.role?.isActive == 0" class="side-nav__devider my-6"></li>
+    <li *ngIf="staff.role?.isActive == 0 || staff.role?.isActive == 3">
       <a
         href="javascript:;"
         class="side-menu side-menu--open"
@@ -272,8 +272,8 @@
         </li>
       </ul>
     </li>
-    <li class="side-nav__devider my-6"></li>
-    <li>
+    <li *ngIf="staff.role?.isActive == 0" class="side-nav__devider my-6"></li>
+    <li *ngIf="staff.role?.isActive == 0 || staff.role?.isActive == 4">
       <a
         href="javascript:;"
         class="side-menu side-menu--open"

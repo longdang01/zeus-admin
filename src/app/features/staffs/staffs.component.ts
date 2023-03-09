@@ -107,7 +107,7 @@ export class StaffsComponent implements OnInit {
           password: res['user'].password,
         })
 
-        $("#dobStaff").val(this.staffForm.get("dob")?.value.slice(0, 10));
+        $("#dobStaff").val(this.staffForm.get("dob")?.value?.slice(0, 10));
 
 
         if(!res['picture']) this.deleteImage();
